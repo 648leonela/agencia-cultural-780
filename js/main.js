@@ -5,6 +5,13 @@
  * ============================================================================
  */
 
+/**
+ * URL de la aplicación web de Google Apps Script que guarda los mensajes
+ * del formulario de contacto en Google Sheets.
+ * Ver instrucciones en: google-apps-script/LEEME.md
+ */
+const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxfJ-5qEEvk2yqEjRuk2tVT9MB4fc6yvSj95SkjbgFpBeddY03Iq0zpsym9sX9D63P0Aw/exec';
+
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Navegación Móvil (Menú hamburguesa)
   initMobileMenu();
@@ -294,20 +301,48 @@ function initContactForm() {
       return;
     }
 
-    // Simulación de envío
+    if (!GOOGLE_SHEET_URL || GOOGLE_SHEET_URL.startsWith('PEGA_AQUI')) {
+      console.warn('Configura GOOGLE_SHEET_URL en js/main.js para recibir los mensajes.');
+      showToast('El formulario aún no está configurado. Escríbenos a contacto@acsieteochenta.com', 'error');
+      return;
+    }
+
+    // Datos que se guardan en la hoja de cálculo
+    const checkedReason = form.querySelector('input[name="contactType"]:checked');
+    const reasonText = checkedReason
+      ? checkedReason.closest('label').querySelector('span').textContent.trim()
+      : '';
+    const visitorName = nameInput.value.trim();
+
+    const data = new URLSearchParams({
+      nombre: visitorName,
+      correo: emailInput.value.trim(),
+      organizacion: document.getElementById('contactOrg').value.trim(),
+      motivo: reasonText,
+      mensaje: messageInput.value.trim(),
+      website: document.getElementById('contactWebsite').value // campo antispam
+    });
+
     const originalText = submitBtn.innerHTML;
     submitBtn.disabled = true;
     submitBtn.innerHTML = 'Enviando mensaje...';
 
-    setTimeout(() => {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalText;
-      form.reset();
-
-      // Abrir modal de confirmación
-      document.getElementById('thankYouName').textContent = nameInput.value || 'amigo/a';
-      openModal('contactSuccessModal');
-    }, 1000);
+    fetch(GOOGLE_SHEET_URL, { method: 'POST', body: data })
+      .then(res => res.json())
+      .then(result => {
+        if (result.result !== 'success') throw new Error(result.error || 'Error al guardar');
+        form.reset();
+        document.getElementById('thankYouName').textContent = visitorName || 'amigo/a';
+        openModal('contactSuccessModal');
+      })
+      .catch(err => {
+        console.error('Error enviando el formulario:', err);
+        showToast('No pudimos enviar tu mensaje. Inténtalo de nuevo o escríbenos a contacto@acsieteochenta.com', 'error');
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      });
   });
 }
 
