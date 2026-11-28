@@ -57,6 +57,11 @@ html {
   font-size: 16px;
 }
 
+/* Al saltar a "Lo que hacemos" desde el botón del inicio, deja espacio para el menú fijo */
+#lo-que-hacemos {
+  scroll-margin-top: 100px;
+}
+
 body {
   font-family: var(--font-sans);
   color: var(--text-main);
@@ -367,7 +372,7 @@ button {
   position: relative;
   padding: 6rem 0 7rem;
   background: linear-gradient(135deg, rgba(0, 41, 107, 0.90) 0%, rgba(0, 81, 158, 0.84) 100%),
-              url('../img/hero-bg.jpeg') center top / cover no-repeat;
+              url('../img/hero-bg.webp') center top / cover no-repeat;
   color: #ffffff;
   overflow: hidden;
 }
@@ -824,8 +829,14 @@ button {
 }
 
 .thumb-bg-1 { background: linear-gradient(135deg, #00296b, #00519e); }
-.thumb-bg-2 { background: linear-gradient(135deg, #fdc400, #fed600); }
-.thumb-bg-3 { background: linear-gradient(135deg, #003f87, #00519e); }
+.thumb-bg-2 {
+  background: linear-gradient(180deg, rgb(0 41 107 / 0.35) 0%, rgb(0 41 107 / 0.1) 45%, rgb(0 41 107 / 0.3) 100%),
+              url('../img/proteccion-fotografia.webp') center 35% / cover no-repeat;
+}
+.thumb-bg-3 {
+  background: linear-gradient(180deg, rgb(0 41 107 / 0.35) 0%, rgb(0 41 107 / 0.1) 45%, rgb(0 41 107 / 0.3) 100%),
+              url('../img/refugios-taller-dibujo.webp') center 45% / cover no-repeat;
+}
 
 .program-thumb-icon {
   width: 70px;
@@ -833,17 +844,51 @@ button {
   color: rgba(255, 255, 255, 0.9);
 }
 
+/* Sombra inferior para que la etiqueta se lea sobre cualquier fondo o foto */
+.program-thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgb(0 25 66 / 0.78) 0%, rgb(0 25 66 / 0) 62%);
+  pointer-events: none;
+}
+
 .program-tag {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
-  background-color: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(4px);
+  left: 1.5rem;
+  right: 1.5rem;
+  bottom: 1.1rem;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  max-width: 22rem;
   color: #ffffff;
-  font-size: 0.75rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  padding: 0.25rem 0.75rem;
-  border-radius: var(--radius-full);
+  line-height: 1.5;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  text-shadow: 0 1px 2px rgb(0 0 0 / 0.25);
+}
+
+/* Íconos un poco más arriba para dejar espacio a la etiqueta */
+.program-thumb .program-thumb-icon {
+  width: 58px;
+  height: 58px;
+  margin-bottom: 2.75rem;
+}
+
+/* Línea amarilla de acento antes del texto */
+.program-tag::before {
+  content: '';
+  flex: none;
+  width: 1.25rem;
+  height: 2px;
+  margin-top: 0.7em;
+  background: var(--secondary);
+  border-radius: 2px;
 }
 
 .program-content {
@@ -1677,6 +1722,26 @@ button {
     transition: var(--transition);
   }
 
+  /* Enlaces del menú móvil con área de toque cómoda (mínimo 44px de alto) */
+  .nav-links {
+    gap: 0.25rem;
+    padding: 1rem 1.5rem 1.5rem;
+  }
+
+  .nav-links .nav-link {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 48px;
+    padding: 0.5rem 0.25rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 1.05rem;
+  }
+
+  .nav-links .nav-link:last-child {
+    border-bottom: 0;
+  }
+
   .nav-links.active {
     transform: translateY(0);
     opacity: 1;
@@ -2093,12 +2158,12 @@ button {
 
 .page-hero--refugios {
   background: linear-gradient(135deg, rgb(0 41 107 / 0.93) 0%, rgb(0 81 158 / 0.82) 100%),
-              url('../img/ninos-fotografia.webp') center 25% / cover no-repeat;
+              url('../img/refugios-baile-barrio.webp') center 45% / cover no-repeat;
 }
 
 .page-hero--proteccion {
   background: linear-gradient(135deg, rgb(0 41 107 / 0.94) 0%, rgb(0 81 158 / 0.84) 100%),
-              url('../img/entornos-seguros.webp') center 40% / cover no-repeat;
+              url('../img/proteccion-taller-pintura.webp') center 35% / cover no-repeat;
 }
 
 /* Hero con franja de cifras montada encima */
@@ -2151,24 +2216,39 @@ button {
 }
 
 .page-hero-title {
-  max-width: 820px;
-  margin-bottom: 1rem;
-  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  max-width: 900px;
+  margin-bottom: 1.5rem;
+  font-size: clamp(2.4rem, 6vw, 4rem);
   font-weight: 800;
-  line-height: 1.12;
+  line-height: 1.05;
   letter-spacing: -0.02em;
   text-wrap: balance;
 }
 
+/* Segunda línea del título: más pequeña para que el nombre del programa destaque */
 .page-hero-title span {
   display: block;
+  margin-top: 0.6rem;
+  font-size: 0.5em;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--secondary);
+}
+
+/* Palabra resaltada en amarillo dentro del título (mismo tamaño) */
+.page-hero-title em {
+  font-style: normal;
   color: var(--secondary);
 }
 
 .page-hero-subtitle {
-  max-width: 640px;
-  margin-bottom: 2rem;
-  font-size: 1.2rem;
+  max-width: 620px;
+  margin-bottom: 2.25rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--secondary);
+  font-size: 1.15rem;
+  line-height: 1.6;
   color: #dbe5f1;
 }
 
@@ -3022,5 +3102,1164 @@ button {
   .territory-card,
   .alliance-feature {
     padding: 1.75rem;
+  }
+}
+
+/* ==========================================================================
+   GALERÍA DE FOTOS (páginas de programas)
+   ========================================================================== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 200px;
+  grid-auto-flow: dense;
+  gap: 0.875rem;
+}
+
+.gallery-item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background-color: var(--bg-subtle);
+}
+
+/* Fotos destacadas: ocupan 2 columnas y 2 filas */
+.gallery-item--large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.gallery-item--right {
+  grid-column: 3 / span 2;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+/* Sombra inferior y pie de foto que aparecen al pasar el cursor */
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgb(0 25 66 / 0.75) 0%, rgb(0 25 66 / 0) 55%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.gallery-caption {
+  position: absolute;
+  left: 1.1rem;
+  right: 1.1rem;
+  bottom: 0.9rem;
+  z-index: 1;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.gallery-item:hover img,
+.gallery-item:focus-visible img {
+  transform: scale(1.06);
+}
+
+.gallery-item:hover::after,
+.gallery-item:focus-visible::after,
+.gallery-item:hover .gallery-caption,
+.gallery-item:focus-visible .gallery-caption {
+  opacity: 1;
+  transform: none;
+}
+
+.gallery-item:focus-visible {
+  outline: 3px solid var(--secondary);
+  outline-offset: 3px;
+}
+
+.gallery-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+.gallery-footer .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.gallery-note {
+  font-size: 0.85rem;
+  color: var(--text-muted, #64748b);
+}
+
+@media (max-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 160px;
+  }
+
+  .gallery-item--large,
+  .gallery-item--right {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+}
+
+/* Casilla de video dentro de la galería */
+.gallery-video {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  background-color: #0f172a;
+}
+
+.gallery-video::after {
+  opacity: 1;
+  background: linear-gradient(to top, rgb(0 25 66 / 0.85) 0%, rgb(0 25 66 / 0.1) 60%);
+}
+
+.gallery-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  padding-left: 4px;
+  color: var(--dark);
+  background: var(--secondary);
+  border-radius: 50%;
+  box-shadow: 0 0 0 10px rgb(253 196 0 / 0.25), 0 10px 30px rgb(0 0 0 / 0.3);
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-video:hover .gallery-play,
+.gallery-video:focus-visible .gallery-play {
+  transform: translate(-50%, -50%) scale(1.08);
+  box-shadow: 0 0 0 16px rgb(253 196 0 / 0.25), 0 10px 30px rgb(0 0 0 / 0.3);
+}
+
+.gallery-video-title {
+  position: absolute;
+  left: 1.5rem;
+  right: 1.5rem;
+  bottom: 1.25rem;
+  z-index: 1;
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.gallery-video-label {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--secondary);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.gallery-video--playing {
+  cursor: default;
+}
+
+.gallery-video--playing::after {
+  display: none;
+}
+
+.gallery-video--playing iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Video destacado: ancho completo sobre el mosaico de fotos.
+   La portada se muestra tal cual aparece en YouTube (sin velo ni texto encima). */
+.gallery-feature {
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgb(0 41 107 / 0.18);
+}
+
+.gallery-feature::after {
+  display: none;
+}
+
+.gallery-feature .gallery-play {
+  width: 104px;
+  height: 104px;
+  padding-left: 6px;
+  box-shadow: 0 0 0 14px rgb(253 196 0 / 0.3), 0 14px 40px rgb(0 0 0 / 0.35);
+}
+
+.gallery-feature:hover .gallery-play,
+.gallery-feature:focus-visible .gallery-play {
+  box-shadow: 0 0 0 22px rgb(253 196 0 / 0.3), 0 14px 40px rgb(0 0 0 / 0.35);
+}
+
+/* Título del video, debajo de la portada */
+.gallery-feature-caption {
+  margin: 1.25rem 0 2.25rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--secondary);
+  color: var(--dark);
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.gallery-feature-caption .gallery-video-label {
+  margin-bottom: 0.3rem;
+  color: var(--primary);
+  font-size: 0.75rem;
+}
+
+@media (max-width: 600px) {
+  .gallery-feature {
+    border-radius: var(--radius-lg);
+  }
+
+  .gallery-feature .gallery-play {
+    width: 64px;
+    height: 64px;
+    box-shadow: 0 0 0 9px rgb(253 196 0 / 0.3), 0 10px 30px rgb(0 0 0 / 0.3);
+  }
+
+  .gallery-feature-caption {
+    margin: 1rem 0 1.75rem;
+  }
+}
+
+
+
+
+/* ==========================================================================
+   PÁGINA NUESTRA HISTORIA
+   Misma identidad del sitio (azul, amarillo, píldoras, tarjetas redondeadas)
+   con una estructura propia: collage, índice, capítulos en dos columnas.
+   ========================================================================== */
+
+/* Portada con collage */
+.st-hero {
+  position: relative;
+  padding: 3.5rem 0 4.5rem;
+  overflow: hidden;
+  background: linear-gradient(135deg, #00296b 0%, #00519e 100%);
+  color: #ffffff;
+}
+
+.st-hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -8%;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgb(253 196 0 / 0.18) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.st-hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.st-hero .hero-tag {
+  margin-bottom: 1.25rem;
+  color: var(--secondary);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.st-hero-title {
+  margin: 0 0 1.25rem;
+  font-size: clamp(2.6rem, 6vw, 4.25rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+.st-hero-title span {
+  color: var(--secondary);
+}
+
+.st-hero-lead {
+  max-width: 560px;
+  margin: 0 0 2rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--secondary);
+  color: #dbe5f1;
+  font-size: 1.12rem;
+  line-height: 1.7;
+}
+
+.st-collage {
+  position: relative;
+  height: 440px;
+}
+
+.st-collage img {
+  position: absolute;
+  object-fit: cover;
+  border: 5px solid #ffffff;
+  border-radius: 22px;
+  box-shadow: 0 18px 40px rgb(0 0 0 / 0.28);
+}
+
+.st-collage-main {
+  top: 40px;
+  left: 0;
+  width: 68%;
+  height: 300px;
+  z-index: 2;
+}
+
+.st-collage-top {
+  top: 0;
+  right: 0;
+  width: 44%;
+  height: 200px;
+  z-index: 1;
+  transform: rotate(3deg);
+}
+
+.st-collage-bottom {
+  right: 4%;
+  bottom: 0;
+  width: 50%;
+  height: 210px;
+  z-index: 3;
+  transform: rotate(-2deg);
+}
+
+.st-collage-badge {
+  position: absolute;
+  left: 6%;
+  bottom: 14px;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  padding: 0.85rem 1.2rem;
+  background: var(--secondary);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 12px 28px rgb(0 0 0 / 0.25);
+  color: var(--dark);
+}
+
+.st-collage-badge strong {
+  font-size: 1.8rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.st-collage-badge span {
+  margin-top: 0.2rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+/* Introducción e índice */
+.st-intro-note {
+  margin: -0.5rem 0 1rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.st-pills {
+  justify-content: center;
+  margin-bottom: 3.5rem;
+}
+
+.st-index {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+}
+
+.st-index-card {
+  position: relative;
+  display: block;
+  height: 340px;
+  overflow: hidden;
+  border-radius: 22px;
+  color: #ffffff;
+  text-decoration: none;
+  box-shadow: 0 16px 36px rgb(0 41 107 / 0.14);
+}
+
+.st-index-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.st-index-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgb(0 25 66 / 0.92) 0%, rgb(0 25 66 / 0.2) 60%, rgb(0 25 66 / 0) 100%);
+}
+
+.st-index-body {
+  position: absolute;
+  left: 1.75rem;
+  right: 1.75rem;
+  bottom: 1.5rem;
+  z-index: 1;
+}
+
+.st-index-year {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  padding: 0.25rem 0.75rem;
+  background: var(--secondary);
+  border-radius: var(--radius-full);
+  color: var(--dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.st-index-body h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.st-index-body p {
+  margin: 0 0 0.9rem;
+  color: #dbe5f1;
+}
+
+.st-index-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--secondary);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.st-index-card:hover img,
+.st-index-card:focus-visible img {
+  transform: scale(1.05);
+}
+
+.st-index-card:focus-visible {
+  outline: 3px solid var(--secondary);
+  outline-offset: 4px;
+}
+
+/* Deja espacio para el menú fijo al saltar desde el índice */
+.st-anchor {
+  scroll-margin-top: 76px;
+}
+
+/* Capítulo en dos columnas (Casa Tricolor) */
+.st-chapter {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.st-chapter-story .program-intro-title {
+  margin: 1rem 0 0.5rem;
+}
+
+.st-chapter-sub {
+  margin: 0 0 1.5rem;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.st-chapter-photo {
+  margin: 0 0 1.75rem;
+}
+
+.st-chapter-photo img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.st-text {
+  margin: 1.25rem 0;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.st-quote {
+  position: relative;
+  margin: 2rem 0;
+  padding: 1.5rem 1.5rem 1.5rem 3.5rem;
+  background: var(--secondary-light);
+  border-radius: var(--radius-lg);
+  color: var(--dark);
+  font-weight: 600;
+  line-height: 1.65;
+}
+
+.st-quote::before {
+  content: '“';
+  position: absolute;
+  top: 0.35rem;
+  left: 1rem;
+  color: var(--secondary);
+  font-family: Georgia, serif;
+  font-size: 3.5rem;
+  line-height: 1;
+}
+
+/* Hitos por año: tarjetas apiladas con línea de conexión */
+.st-steps-intro {
+  margin: 0 0 1.5rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+.st-steps {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0 0 0 1.75rem;
+  list-style: none;
+}
+
+.st-steps::before {
+  content: '';
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 0.45rem;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--primary), var(--secondary));
+  border-radius: 3px;
+}
+
+.st-step {
+  position: relative;
+  padding: 1.75rem;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 10px 26px rgb(0 41 107 / 0.07);
+}
+
+.st-step::before {
+  content: '';
+  position: absolute;
+  top: 2rem;
+  left: calc(-1.75rem + 0.08rem);
+  width: 14px;
+  height: 14px;
+  background: #ffffff;
+  border: 3px solid var(--primary);
+  border-radius: 50%;
+}
+
+.st-step--current::before {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 5px rgb(253 196 0 / 0.25);
+}
+
+.st-step-year {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  padding: 0.3rem 0.85rem;
+  background: var(--dark);
+  border-radius: var(--radius-full);
+  color: var(--secondary);
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.st-step--current .st-step-year {
+  background: var(--secondary);
+  color: var(--dark);
+}
+
+.st-step h3 {
+  margin: 0 0 0.75rem;
+  color: var(--dark);
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.st-step p {
+  margin: 0.75rem 0;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+.st-step-divider {
+  margin: 1.5rem 0;
+  border: 0;
+  border-top: 1px dashed var(--border);
+}
+
+/* Bloque azul de Refugios Culturales */
+.st-dark {
+  position: relative;
+  padding: 5.5rem 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, #00296b 0%, #003f87 100%);
+  color: #ffffff;
+}
+
+.st-dark::after {
+  content: '';
+  position: absolute;
+  right: -10%;
+  bottom: -30%;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgb(253 196 0 / 0.16) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.st-dark .container {
+  position: relative;
+  z-index: 1;
+}
+
+.st-dark-header {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 3rem;
+  align-items: end;
+  margin-bottom: 2.5rem;
+}
+
+.st-dark-eyebrow {
+  color: var(--secondary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.st-dark-title {
+  margin: 0.75rem 0 0.5rem;
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+.st-dark-title span {
+  color: var(--secondary);
+}
+
+.st-dark-sub {
+  margin: 0;
+  color: #c7d4e6;
+  font-weight: 600;
+}
+
+.st-dark-lead {
+  margin: 0;
+  color: #dbe5f1;
+  font-size: 1.08rem;
+  line-height: 1.8;
+}
+
+.st-dark-note {
+  margin: 0 0 1.25rem;
+  color: #c7d4e6;
+}
+
+.st-experiences {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.st-experiences li {
+  padding: 1.75rem 1.5rem;
+  background: rgb(255 255 255 / 0.07);
+  border: 1px solid rgb(255 255 255 / 0.14);
+  border-radius: 20px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.st-experiences li:hover {
+  transform: translateY(-4px);
+  background: rgb(255 255 255 / 0.11);
+}
+
+.st-exp-num {
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--secondary);
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.st-experiences h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.st-experiences p {
+  margin: 0;
+  color: #c7d4e6;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* Hitos y aliados de Refugios */
+.st-refugios-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.st-allies {
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: 0 16px 36px rgb(0 41 107 / 0.1);
+}
+
+.st-allies-photo {
+  margin: 0;
+}
+
+.st-allies-photo img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.st-allies-body {
+  padding: 1.75rem;
+}
+
+.st-allies-body p {
+  margin: 0.75rem 0 1rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.st-allies-list {
+  margin: 0 0 1.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.st-allies-list li {
+  position: relative;
+  padding: 0.55rem 0 0.55rem 1.4rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--dark);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.st-allies-list li::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--secondary);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+/* Tabletas */
+@media (max-width: 1024px) {
+  .st-experiences {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .st-hero-grid,
+  .st-chapter,
+  .st-refugios-grid,
+  .st-dark-header {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .st-collage {
+    height: 360px;
+  }
+
+  .st-collage-main {
+    height: 250px;
+  }
+
+  .st-collage-top {
+    height: 170px;
+  }
+
+  .st-collage-bottom {
+    height: 170px;
+  }
+
+  .st-index {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Celulares */
+@media (max-width: 600px) {
+  .st-collage {
+    height: 290px;
+  }
+
+  .st-collage-main {
+    top: 30px;
+    width: 72%;
+    height: 200px;
+  }
+
+  .st-collage-top {
+    width: 48%;
+    height: 140px;
+  }
+
+  .st-collage-bottom {
+    width: 54%;
+    height: 140px;
+  }
+
+  .st-index-card {
+    height: 280px;
+  }
+
+  .st-collage-badge {
+    left: auto;
+    right: 2%;
+    bottom: -6px;
+    padding: 0.6rem 0.9rem;
+  }
+
+  .st-collage-badge strong {
+    font-size: 1.35rem;
+  }
+
+  .st-collage-badge span {
+    font-size: 0.7rem;
+  }
+
+  .st-experiences {
+    grid-template-columns: 1fr;
+  }
+
+  .st-step {
+    padding: 1.4rem;
+  }
+
+  .st-dark {
+    padding: 4rem 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Toque sentimental: frases en cursiva con serifa, manifiesto, foto con
+   mensaje y agradecimiento. Solo se usa la serifa en las frases emotivas.
+   -------------------------------------------------------------------------- */
+.st-hero,
+.st-manifesto,
+.st-moment,
+.st-thanks,
+.st-quote {
+  --st-serif: Georgia, 'Times New Roman', Times, serif;
+}
+
+.st-hero-whisper {
+  margin: -0.5rem 0 1.25rem;
+  color: var(--secondary);
+  font-family: var(--st-serif);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  font-style: italic;
+}
+
+/* La cita de Casa Tricolor también en tono cálido */
+.st-quote {
+  font-family: var(--st-serif);
+  font-size: 1.12rem;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Manifiesto */
+.st-manifesto {
+  padding: 5rem 0 1rem;
+  background: #ffffff;
+}
+
+.st-manifesto-quote {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+  padding-top: 2.5rem;
+  text-align: center;
+}
+
+.st-manifesto-quote::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 56px;
+  height: 4px;
+  background: var(--secondary);
+  border-radius: 4px;
+  transform: translateX(-50%);
+}
+
+.st-manifesto-quote p {
+  margin: 0;
+  color: var(--dark);
+  font-family: var(--st-serif);
+  font-size: clamp(1.5rem, 3.2vw, 2.25rem);
+  font-style: italic;
+  line-height: 1.45;
+}
+
+.st-manifesto-quote footer {
+  margin-top: 1.5rem;
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Foto a todo el ancho con mensaje */
+.st-moment {
+  position: relative;
+  min-height: 460px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+.st-moment img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.st-moment::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgb(0 25 66 / 0.7) 0%, rgb(0 25 66 / 0.25) 55%, rgb(0 25 66 / 0) 80%),
+    linear-gradient(to top, rgb(0 25 66 / 0.85) 0%, rgb(0 25 66 / 0.3) 45%, rgb(0 25 66 / 0.05) 100%);
+}
+
+.st-moment-inner {
+  position: relative;
+  z-index: 1;
+  padding-top: 4rem;
+  padding-bottom: 3.5rem;
+}
+
+.st-moment-text {
+  max-width: 720px;
+  margin: 0;
+  padding-left: 1.25rem;
+  border-left: 4px solid var(--secondary);
+  font-family: var(--st-serif);
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+  line-height: 1.4;
+}
+
+.st-moment-text em {
+  color: var(--secondary);
+}
+
+/* Agradecimiento */
+.st-thanks {
+  padding: 5.5rem 0 4.5rem;
+  background: linear-gradient(180deg, #ffffff 0%, var(--secondary-light) 100%);
+}
+
+.st-thanks-inner {
+  max-width: 780px;
+  text-align: center;
+}
+
+.st-thanks-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1.25rem;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 10px 25px rgb(253 196 0 / 0.35);
+  color: var(--secondary);
+}
+
+.st-thanks-title {
+  margin: 0 0 1.25rem;
+  color: var(--dark);
+  font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.st-thanks p {
+  margin: 0 auto;
+  color: var(--text-main);
+  font-size: 1.1rem;
+  line-height: 1.85;
+}
+
+.st-thanks .st-thanks-sign {
+  margin-top: 1.5rem;
+  color: var(--primary);
+  font-family: var(--st-serif);
+  font-size: 1.35rem;
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .st-manifesto {
+    padding-top: 3.5rem;
+  }
+
+  .st-moment {
+    min-height: 380px;
+  }
+
+  .st-thanks {
+    padding: 4rem 0 3.5rem;
+  }
+}
+
+/* ==========================================================================
+   IMÁGENES PARA CELULAR
+   En pantallas de hasta 768 px se usan las versiones de img/movil/:
+   más livianas y, en las portadas, recortadas en vertical para el celular.
+   El celular descarga solo esta versión, no la de escritorio.
+   ========================================================================== */
+picture {
+  display: contents;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    background: linear-gradient(135deg, rgba(0, 41, 107, 0.90) 0%, rgba(0, 81, 158, 0.84) 100%),
+                url('../img/movil/portadas/hero-bg.webp') center top / cover no-repeat;
+  }
+
+  .thumb-bg-2 {
+    background: linear-gradient(180deg, rgb(0 41 107 / 0.35) 0%, rgb(0 41 107 / 0.1) 45%, rgb(0 41 107 / 0.3) 100%),
+                url('../img/movil/proteccion-fotografia.webp') center 35% / cover no-repeat;
+  }
+
+  .thumb-bg-3 {
+    background: linear-gradient(180deg, rgb(0 41 107 / 0.35) 0%, rgb(0 41 107 / 0.1) 45%, rgb(0 41 107 / 0.3) 100%),
+                url('../img/movil/refugios-taller-dibujo.webp') center 45% / cover no-repeat;
+  }
+
+  .page-hero--tricolor {
+    background: linear-gradient(135deg, rgb(0 41 107 / 0.93) 0%, rgb(0 81 158 / 0.82) 100%),
+                url('../img/movil/portadas/formacion-musical.webp') center / cover no-repeat;
+  }
+
+  .page-hero--refugios {
+    background: linear-gradient(135deg, rgb(0 41 107 / 0.93) 0%, rgb(0 81 158 / 0.82) 100%),
+                url('../img/movil/portadas/refugios-baile-barrio.webp') center / cover no-repeat;
+  }
+
+  .page-hero--proteccion {
+    background: linear-gradient(135deg, rgb(0 41 107 / 0.94) 0%, rgb(0 81 158 / 0.84) 100%),
+                url('../img/movil/portadas/proteccion-taller-pintura.webp') center / cover no-repeat;
+  }
+}
+
+/* ==========================================================================
+   AJUSTES DE REVISIÓN RESPONSIVE
+   ========================================================================== */
+
+/* Contacto: evita que los textos largos empujen las tarjetas fuera de la pantalla */
+.contact-grid > *,
+.contact-card > div {
+  min-width: 0;
+}
+
+.contact-card p {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 400px) {
+  .contact-card {
+    gap: 0.9rem;
+    padding: 1.15rem;
+  }
+}
+
+/* Textos pequeños: mínimo 12px para que se lean bien en el celular */
+.program-tag,
+.gallery-video-label,
+.st-collage-badge span {
+  font-size: 0.75rem;
+}
+
+/* Pie de página en celular: enlaces más altos para tocarlos con el dedo */
+@media (max-width: 768px) {
+  .footer-links {
+    gap: 0;
+  }
+
+  .footer-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-meta-link,
+  .footer-platform-link {
+    min-height: 40px;
   }
 }
