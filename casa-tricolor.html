@@ -10,7 +10,7 @@
       name="description"
       content="Casa Tricolor promueve desde 2021 el acceso de niñas y niños a las artes y la cultura en Barranquilla y su área metropolitana: teatro, música, danza, artes plásticas, circo y fotografía."
     />
-    <link rel="stylesheet" href="css/style.css?v=2.0" />
+    <link rel="stylesheet" href="css/style.css?v=2.1" />
   </head>
   <body>
     <!-- ==========================================================================
@@ -20,7 +20,7 @@
       <div class="container navbar">
         <!-- Logotipo -->
         <a href="index.html#inicio" class="logo" aria-label="Inicio Siete Ochenta">
-          <img src="img/logo.png" alt="Logo Siete Ochenta" class="logo-img" />
+          <img src="img/logo.webp" alt="Logo Siete Ochenta" class="logo-img" />
           <span class="logo-text">
             <span class="logo-siete" style="color: #00519e; font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; font-size: 1.55rem; font-weight: 800; letter-spacing: 0.5px;">Siete</span>
             <span class="logo-ochenta" style="color: #fdc400; font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; font-size: 1.55rem; font-weight: 800; letter-spacing: 0.5px; margin-left: 5px;">Ochenta</span>
@@ -274,6 +274,86 @@
       </section>
 
       <!-- ==========================================================================
+         GALERÍA DE FOTOS (fotos del álbum de Flickr de la Agencia y video de YouTube)
+         ========================================================================== -->
+      <section class="section" id="galeria">
+        <div class="container">
+          <div class="section-header">
+            <span class="badge badge-secondary">Galería de Fotos</span>
+            <h2 class="section-title">Infancias que juegan, crean y se encuentran</h2>
+            <p class="section-subtitle">
+              Música, teatro, títeres, juego y artes plásticas en los espacios de la
+              Escuelita Comunitaria de Arte y Cultura.
+            </p>
+          </div>
+
+          <!-- Video destacado: ocupa todo el ancho y se reproduce en la misma página al hacer clic -->
+          <button
+            type="button"
+            class="gallery-item gallery-feature gallery-video"
+            data-youtube-id="48XGY_Fa2NI"
+            aria-label="Reproducir video: Mochila Atrapasueños, propuesta de Casa Tricolor"
+          >
+            <picture><source media="(max-width: 768px)" srcset="img/movil/galeria/casa-tricolor/video-portada.webp" type="image/webp" /><img src="img/galeria/casa-tricolor/video-portada.webp" alt="" loading="lazy" /></picture>
+            <span class="gallery-play" aria-hidden="true">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"></path></svg>
+            </span>
+          </button>
+          <p class="gallery-feature-caption">
+            <span class="gallery-video-label">Video · Casa Tricolor</span>
+            Mochila Atrapasueños: la propuesta de Casa Tricolor
+          </p>
+
+          <div class="gallery-grid">
+            <a class="gallery-item gallery-item--large" href="https://www.flickr.com/photos/205239264@N08/55677588749/in/album-72177720336951086" target="_blank" rel="noopener">
+              <picture><source media="(max-width: 768px)" srcset="img/movil/galeria/casa-tricolor/encuentro-grupal.webp" type="image/webp" /><img src="img/galeria/casa-tricolor/encuentro-grupal.webp" alt="Niñas, niños, familias y formadores reunidos en un encuentro de la Escuelita Comunitaria" loading="lazy" /></picture>
+              <span class="gallery-caption">Encuentro de la Escuelita</span>
+            </a>
+            <a class="gallery-item" href="https://www.flickr.com/photos/205239264@N08/55676419497/in/album-72177720336951086" target="_blank" rel="noopener">
+              <picture><source media="(max-width: 768px)" srcset="img/movil/galeria/casa-tricolor/payasos-nariz-roja.webp" type="image/webp" /><img src="img/galeria/casa-tricolor/payasos-nariz-roja.webp" alt="Niñas y niños con nariz de payaso aplauden junto a un formador" loading="lazy" /></picture>
+              <span class="gallery-caption">Clown y juego</span>
+            </a>
+            <a class="gallery-item" href="https://www.flickr.com/photos/205239264@N08/55677531928/in/album-72177720336951086" target="_blank" rel="noopener">
+              <picture><source media="(max-width: 768px)" srcset="img/movil/galeria/casa-tricolor/titeres.webp" type="image/webp" /><img src="img/galeria/casa-tricolor/titeres.webp" alt="Un niño y una niña presentan una función de títeres" loading="lazy" /></picture>
+              <span class="gallery-caption">Títeres</span>
+            </a>
+            <a class="gallery-item" href="https://www.flickr.com/photos/205239264@N08/55677586324/in/album-72177720336951086" target="_blank" rel="noopener">
+              <picture><source media="(max-width: 768px)" srcset="img/movil/galeria/casa-tricolor/taller-musica.webp" type="image/webp" /><img src="img/galeria/casa-tricolor/taller-musica.webp" alt="Niñas y niños rodean un teclado durante el taller de música" loading="lazy" /></picture>
+              <span class="gallery-caption">Taller de música</span>
+            </a>
+            <a class="gallery-item" href="https://www.flickr.com/photos/205239264@N08/55677525928/in/album-72177720336951086" target="_blank" rel="noopener">
+              <picture><source media="(max-width: 768px)" srcset="img/movil/galeria/casa-tricolor/juego-globos.webp" type="image/webp" /><img src="img/galeria/casa-tricolor/juego-globos.webp" alt="Niñas y niños juegan con globos de colores" loading="lazy" /></picture>
+              <span class="gallery-caption">Juego y expresión</span>
+            </a>
+            <a class="gallery-item" href="https://www.flickr.com/photos/205239264@N08/55677592534/in/album-72177720336951086" target="_blank" rel="noopener">
+              <picture><source media="(max-width: 768px)" srcset="img/movil/galeria/casa-tricolor/juego-al-aire-libre.webp" type="image/webp" /><img src="img/galeria/casa-tricolor/juego-al-aire-libre.webp" alt="Niñas y niños levantan los brazos durante una actividad al aire libre" loading="lazy" /></picture>
+              <span class="gallery-caption">Actividad comunitaria</span>
+            </a>
+            <a class="gallery-item" href="https://www.flickr.com/photos/205239264@N08/55677833275/in/album-72177720336951086" target="_blank" rel="noopener">
+              <picture><source media="(max-width: 768px)" srcset="img/movil/galeria/casa-tricolor/presentacion-artistica.webp" type="image/webp" /><img src="img/galeria/casa-tricolor/presentacion-artistica.webp" alt="Un artista se presenta ante niñas y niños sentados en el salón" loading="lazy" /></picture>
+              <span class="gallery-caption">Presentación artística</span>
+            </a>
+            <a class="gallery-item" href="https://www.flickr.com/photos/205239264@N08/55677837020/in/album-72177720336951086" target="_blank" rel="noopener">
+              <picture><source media="(max-width: 768px)" srcset="img/movil/galeria/casa-tricolor/nina-con-titere.webp" type="image/webp" /><img src="img/galeria/casa-tricolor/nina-con-titere.webp" alt="Una niña sostiene un títere durante un taller" loading="lazy" /></picture>
+              <span class="gallery-caption">Taller de títeres</span>
+            </a>
+            <a class="gallery-item" href="https://www.flickr.com/photos/205239264@N08/55677840270/in/album-72177720336951086" target="_blank" rel="noopener">
+              <picture><source media="(max-width: 768px)" srcset="img/movil/galeria/casa-tricolor/taller-mural.webp" type="image/webp" /><img src="img/galeria/casa-tricolor/taller-mural.webp" alt="Niñas y niños trabajan en mesas frente a un mural durante el taller de arte con plastilina" loading="lazy" /></picture>
+              <span class="gallery-caption">Arte con plastilina</span>
+            </a>
+          </div>
+
+          <div class="gallery-footer">
+            <a class="btn btn-primary" href="https://flic.kr/s/aHBqjDbHry" target="_blank" rel="noopener">
+              Ver el álbum completo (78 fotos)
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
+            </a>
+            <span class="gallery-note">Fotos publicadas en Flickr por la Agencia Cultural 7-80</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
          CIERRE
          ========================================================================== -->
       <section class="participation-section">
@@ -318,7 +398,7 @@
           <div class="footer-brand">
             <div class="logo" style="color: #ffffff">
               <img
-                src="img/logo.png"
+                src="img/logo.webp"
                 alt="Logo Siete Ochenta"
                 class="logo-img"
                 style="filter: brightness(1.1)"
@@ -577,6 +657,6 @@
       </svg>
     </button>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=2.1"></script>
   </body>
 </html>

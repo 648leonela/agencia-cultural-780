@@ -39,7 +39,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 9. Sistema de modales
   initModals();
+
+  // 10. Videos de YouTube en las galerías (se cargan solo al hacer clic)
+  initGalleryVideos();
 });
+
+/* ==========================================================================
+   10. VIDEOS EN GALERÍAS
+   Muestra la portada del video y, al hacer clic, la reemplaza por el
+   reproductor de YouTube dentro de la misma casilla de la galería.
+   ========================================================================== */
+function initGalleryVideos() {
+  document.querySelectorAll('.gallery-video[data-youtube-id]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const id = button.dataset.youtubeId;
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+      iframe.title = button.getAttribute('aria-label') || 'Video de YouTube';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      iframe.allowFullscreen = true;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = button.className.replace('gallery-video', 'gallery-video gallery-video--playing');
+      wrapper.appendChild(iframe);
+      button.replaceWith(wrapper);
+      iframe.focus();
+    });
+  });
+}
 
 /* ==========================================================================
    1. NAVEGACIÓN MÓVIL
