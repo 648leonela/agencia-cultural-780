@@ -10,7 +10,7 @@
       name="description"
       content="Organización sin fines de lucro dedicada a promover la educación, la salud integral y el bienestar de niños, jóvenes y familias en situación de vulnerabilidad."
     />
-    <link rel="stylesheet" href="css/style.css?v=2.0" />
+    <link rel="stylesheet" href="css/style.css?v=2.1" />
   </head>
   <body>
     <!-- ==========================================================================
@@ -20,7 +20,7 @@
       <div class="container navbar">
         <!-- Logotipo -->
         <a href="#inicio" class="logo" aria-label="Inicio Siete Ochenta">
-          <img src="img/logo.png" alt="Logo Siete Ochenta" class="logo-img" />
+          <img src="img/logo.webp" alt="Logo Siete Ochenta" class="logo-img" />
           <span class="logo-text">
             <span class="logo-siete" style="color: #00519e; font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; font-size: 1.55rem; font-weight: 800; letter-spacing: 0.5px;">Siete</span>
             <span class="logo-ochenta" style="color: #fdc400; font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; font-size: 1.55rem; font-weight: 800; letter-spacing: 0.5px; margin-left: 5px;">Ochenta</span>
@@ -92,10 +92,10 @@
               oportunidades a través del arte y la participación colectiva.
             </p>
             <div class="hero-actions">
-              <a href="#programas" class="btn btn-secondary btn-lg"
+              <a href="#lo-que-hacemos" class="btn btn-secondary btn-lg"
                 >Conoce lo que hacemos</a
               >
-              <a href="#quienes-somos" class="btn btn-outline-white btn-lg"
+              <a href="nuestra-historia.html" class="btn btn-outline-white btn-lg"
                 >Nuestra historia</a
               >
             </div>
@@ -103,12 +103,12 @@
             <div class="hero-trust">
               <div class="trust-avatars">
                 <img
-                  src="img/54c4f12e-5cd8-4146-bc64-1c6ac8e5387e.jpeg"
+                  src="img/avatar-participante-1.webp"
                   alt="Participante 1"
                   class="avatar"
                 />
                 <img
-                  src="img/93ac4a1c-858d-4c8b-9450-c744c79c3051.jpeg"
+                  src="img/avatar-participante-2.webp"
                   alt="Participante 2"
                   class="avatar"
                 />
@@ -184,13 +184,13 @@
 
             <figure class="about-presentation-media">
               <div class="about-presentation-photo">
-                <img
+                <picture><source media="(max-width: 768px)" srcset="img/movil/ninos-fotografia.webp" type="image/webp" /><img
                   src="img/ninos-fotografia.webp"
                   alt="Niñas y niños sonríen y caminan por una calle de su barrio mientras aprenden a tomar fotografías con cámaras profesionales"
                   loading="lazy"
                   width="1600"
                   height="1061"
-                />
+                /></picture>
                 <span class="about-photo-chip">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
@@ -234,7 +234,7 @@
           </div>
 
           <!-- 2. LO QUE HACEMOS -->
-          <div class="initiatives-header">
+          <div class="initiatives-header" id="lo-que-hacemos">
             <span class="badge badge-secondary">Lo Que Hacemos</span>
             <h3
               class="section-title"
@@ -261,13 +261,13 @@
             <!-- Bloque 1 -->
             <article class="initiative-card initiative-card--media">
               <figure class="initiative-media">
-                <img
+                <picture><source media="(max-width: 768px)" srcset="img/movil/formacion-musical.webp" type="image/webp" /><img
                   src="img/formacion-musical.webp"
                   alt="Un formador de la Agencia enseña guitarra y cuatro a niñas y niños durante un taller al aire libre"
                   loading="lazy"
                   width="1280"
                   height="718"
-                />
+                /></picture>
               </figure>
               <span class="initiative-tag">EN / CREAR</span>
               <h4 class="initiative-title">Formación y expresión cultural</h4>
@@ -280,13 +280,13 @@
             <!-- Bloque 2 -->
             <article class="initiative-card initiative-card--media">
               <figure class="initiative-media">
-                <img
+                <picture><source media="(max-width: 768px)" srcset="img/movil/entornos-seguros.webp" type="image/webp" /><img
                   src="img/entornos-seguros.webp"
                   alt="Un facilitador guía a un grupo de adolescentes y jóvenes alrededor de un juego de mesa pedagógico durante un taller"
                   loading="lazy"
                   width="647"
                   height="376"
-                />
+                /></picture>
               </figure>
               <span class="initiative-tag">EN / CONVIVIR</span>
               <h4 class="initiative-title">
@@ -301,13 +301,13 @@
             <!-- Bloque 3 -->
             <article class="initiative-card initiative-card--media">
               <figure class="initiative-media">
-                <img
+                <picture><source media="(max-width: 768px)" srcset="img/movil/derechos-inclusion.webp" type="image/webp" /><img
                   src="img/derechos-inclusion.webp"
                   alt="Un joven tallerista toca la guitarra para un grupo de niñas y niños sentados en círculo durante una actividad comunitaria al aire libre"
                   loading="lazy"
                   width="1024"
                   height="576"
-                />
+                /></picture>
               </figure>
               <span class="initiative-tag">EN / INCLUIR</span>
               <h4 class="initiative-title">Derechos, diversidad e inclusión</h4>
@@ -320,13 +320,13 @@
             <!-- Bloque 4 -->
             <article class="initiative-card initiative-card--media">
               <figure class="initiative-media">
-                <img
+                <picture><source media="(max-width: 768px)" srcset="img/movil/alianzas-territoriales.webp" type="image/webp" /><img
                   src="img/alianzas-territoriales.webp"
                   alt="Representantes de organizaciones sociales, agencias de cooperación e instituciones conversan sentados en círculo durante una mesa de articulación"
                   loading="lazy"
                   width="1280"
                   height="853"
-                />
+                /></picture>
               </figure>
               <span class="initiative-tag">EN / COLABORAR</span>
               <h4 class="initiative-title">Alianzas y articulación territorial</h4>
@@ -391,17 +391,6 @@
               <div class="program-thumb thumb-bg-2">
                 <span class="program-tag">PREVENCIÓN DE VIOLENCIAS Y
                    ENTORNOS PROTECTORES</span>
-                <svg
-                  class="program-thumb-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                >
-                  <path
-                    d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 7.65l.77.78L12 20.67l7.65-7.66.77-.78a5.4 5.4 0 0 0 0-7.65Z"
-                  ></path>
-                </svg>
               </div>
               <div class="program-content">
                 <h3 class="program-title">Arte, Cultura y Protección: 
@@ -420,20 +409,6 @@
             <article class="program-card">
               <div class="program-thumb thumb-bg-3">
                 <span class="program-tag">PARTICIPACIÓN JUVENIL Y TRANSFORMACIÓN TERRITORIAL</span>
-                <svg
-                  class="program-thumb-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                >
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <path d="m4.93 4.93 4.24 4.24"></path>
-                  <path d="m14.83 9.17 4.24-4.24"></path>
-                  <path d="m14.83 14.83 4.24 4.24"></path>
-                  <path d="m9.17 14.83-4.24 4.24"></path>
-                  <circle cx="12" cy="12" r="4"></circle>
-                </svg>
               </div>
               <div class="program-content">
                 <h3 class="program-title">Refugios Culturales</h3>
@@ -815,7 +790,7 @@
           <div class="footer-brand">
             <div class="logo" style="color: #ffffff">
               <img
-                src="img/logo.png"
+                src="img/logo.webp"
                 alt="Logo Siete Ochenta"
                 class="logo-img"
                 style="filter: brightness(1.1)"
@@ -1127,6 +1102,6 @@
       </svg>
     </button>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=2.1"></script>
   </body>
 </html>
